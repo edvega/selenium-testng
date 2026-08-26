@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -47,7 +48,7 @@ public class NegativeLoginTests {
     @Test
     public void incorrectPasswordTest() {
         // Open page
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new SafariDriver();
         driver.get("https://practicetestautomation.com/practice-test-login/");
 
         // Type username student into Username field

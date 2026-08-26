@@ -3,7 +3,7 @@ package com.practicetestautomation.tests.login;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,7 +12,7 @@ public class PositiveLoginTests {
     @Test
     public void testLoginFunctionality() {
         // Open page
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new FirefoxDriver();
         driver.get("https://practicetestautomation.com/practice-test-login/");
 
         // Type username student into Username field
