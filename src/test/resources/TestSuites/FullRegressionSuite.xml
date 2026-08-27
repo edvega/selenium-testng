@@ -3,13 +3,22 @@
 <suite name="Full Regression Suite" verbose="1">
     <test name="Positive Login Tests">
         <classes>
-            <class name="com.practicetestautomation.tests.login.PositiveLoginTests"/>
+            <class name="com.practicetestautomation.tests.login.LoginTests">
+                <methods>
+                    <include name="testLoginFunctionality"/>
+                </methods>
+            </class>
         </classes>
     </test>
 
     <test name="Negative Login Tests">
+        <groups>
+            <run>
+                <exclude name="positive"/>
+            </run>
+        </groups>
         <classes>
-            <class name="com.practicetestautomation.tests.login.NegativeLoginTests"/>
+            <class name="com.practicetestautomation.tests.login.LoginTests"/>
         </classes>
     </test>
 </suite>
