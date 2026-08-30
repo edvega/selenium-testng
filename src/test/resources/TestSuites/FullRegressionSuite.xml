@@ -12,9 +12,9 @@
     </test>
 
     <test name="Incorrect Username Test">
-        <parameter name="username" value="incorrectUser"></parameter>
-        <parameter name="password" value="Password123"></parameter>
-        <parameter name="expectedErrorMessage" value="Your username is invalid!"></parameter>
+        <parameter name="username" value="incorrectUser"/>
+        <parameter name="password" value="Password123"/>
+        <parameter name="expectedErrorMessage" value="Your username is invalid!"/>
         <classes>
             <class name="com.practicetestautomation.tests.login.LoginTests">
                 <methods>
@@ -25,9 +25,9 @@
     </test>
 
     <test name="Incorrect Password Test">
-        <parameter name="username" value="student"></parameter>
-        <parameter name="password" value="incorrectPassword"></parameter>
-        <parameter name="expectedErrorMessage" value="Your password is invalid!"></parameter>
+        <parameter name="username" value="student"/>
+        <parameter name="password" value="incorrectPassword"/>
+        <parameter name="expectedErrorMessage" value="Your password is invalid!"/>
         <classes>
             <class name="com.practicetestautomation.tests.login.LoginTests">
                 <methods>
