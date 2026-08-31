@@ -38,7 +38,7 @@
     </test>
 
     <test name="Incorrect Password Test">
-        <parameter name="browser" value="firefox"/>
+        <parameter name="browser" value="safari"/>
         <parameter name="username" value="student"/>
         <parameter name="password" value="incorrectPassword"/>
         <parameter name="expectedErrorMessage" value="Your password is invalid!"/>
