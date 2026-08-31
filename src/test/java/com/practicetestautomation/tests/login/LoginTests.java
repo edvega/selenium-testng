@@ -5,22 +5,45 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class LoginTests {
 
+    private WebDriver driver;
+
+    @BeforeMethod(alwaysRun = true)
+    @Parameters("browser")
+    public void setUp(@Optional("chrome") String browser) {
+
+        System.out.println("Running test in: " + browser);
+        switch (browser.toLowerCase()) {
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                driver = new FirefoxDriver();
+                break;
+            default:
+                System.out.println("Configuration for " + browser + " is missing, so running tests in Chrome by default");
+                driver = new ChromeDriver();
+                break;
+        }
+
+        // Open page
+        driver.get("https://practicetestautomation.com/practice-test-login/");
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
+        driver.quit();
+    }
+
     @Test(groups = {"positive", "regression", "smoke"})
     public void testLoginFunctionality() {
-        // Open page
-        WebDriver driver = new FirefoxDriver();
-        driver.get("https://practicetestautomation.com/practice-test-login/");
-
         // Type username student into Username field
         WebElement usernameInput = driver.findElement(By.id("username"));
-         usernameInput.sendKeys("student");
+        usernameInput.sendKeys("student");
 
         // Type password Password123 into Password field
         WebElement passwordInput = driver.findElement(By.id("password"));
@@ -48,17 +71,11 @@ public class LoginTests {
         // Verify button Log out is displayed on the new page
         WebElement logOutButton  = driver.findElement(By.linkText("Log out"));
         Assert.assertTrue(logOutButton.isDisplayed());
-
-        driver.quit();
     }
 
     @Parameters({"username", "password", "expectedErrorMessage"})
     @Test(groups = {"negative", "regression"})
     public void negativeLoginTest(String username, String password, String expectedErrorMessage) {
-        // Open page
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://practicetestautomation.com/practice-test-login/");
-
         // Type username incorrectUser into Username field
         WebElement usernameInput = driver.findElement(By.id("username"));
         usernameInput.sendKeys(username);
@@ -83,7 +100,5 @@ public class LoginTests {
         // Verify error message text is Your username is invalid!
         String actualErrorMessage = errorMessage.getText();
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
-
-        driver.quit();
     }
 }
