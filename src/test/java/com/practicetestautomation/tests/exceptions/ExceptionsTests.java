@@ -3,7 +3,6 @@ package com.practicetestautomation.tests.exceptions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WrapsElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -104,6 +103,31 @@ public class ExceptionsTests {
                 ExpectedConditions.visibilityOfElementLocated(By.id("confirmation")));
         String actualMessage = successMessage.getText();
         String expectedMessage = "Row 2 was saved";
+        Assert.assertEquals(actualMessage, expectedMessage, "Message is not expected");
+    }
+
+    @Test
+    public void invalidElementStateExceptionTest() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement editButton = driver.findElement(By.id("edit_btn"));
+        editButton.click();
+
+        // Clear input field
+        WebElement row1InputField = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='row1']/input")));
+        row1InputField.clear();
+
+        // Type text into the input field
+        row1InputField.sendKeys("sushi");
+
+        WebElement saveButton = driver.findElement(By.id("save_btn"));
+        saveButton.click();
+
+        // Verify text saved
+        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("confirmation")));
+        String actualMessage = successMessage.getText();
+        String expectedMessage = "Row 1 was saved";
         Assert.assertEquals(actualMessage, expectedMessage, "Message is not expected");
     }
 }
