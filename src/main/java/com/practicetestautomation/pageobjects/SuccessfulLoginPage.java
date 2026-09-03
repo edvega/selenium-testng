@@ -1,7 +1,6 @@
 package com.practicetestautomation.pageobjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class SuccessfulLoginPage extends BasePage {
