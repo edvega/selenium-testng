@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Practice Test Table Suite" verbose="1">
+    <test name="Practice Test Table Tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.practicetestautomation.tests.table.PracticeTestTableTests"/>
+        </classes>
+    </test>
+</suite>

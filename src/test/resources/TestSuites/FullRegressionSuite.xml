@@ -57,4 +57,11 @@
             <class name="com.practicetestautomation.tests.exceptions.ExceptionsTests" />
         </classes>
     </test>
+
+    <test name="Practice Test Table Tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.practicetestautomation.tests.table.PracticeTestTableTests" />
+        </classes>
+    </test>
 </suite>
