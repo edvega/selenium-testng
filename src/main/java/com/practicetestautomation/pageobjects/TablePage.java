@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PracticeTestTablePage extends BasePage {
+public class TablePage extends BasePage {
 
     private final By resetButtonLocator = By.id("resetFilters");
     private final By noDataLocator = By.id("noData");
@@ -17,7 +17,7 @@ public class PracticeTestTablePage extends BasePage {
     private final By sortByLocator = By.id("sortBy");
     private final By rowsLocator = By.cssSelector("#courses_table tbody tr");
 
-    public PracticeTestTablePage(WebDriver driver) {
+    public TablePage(WebDriver driver) {
         super(driver);
     }
 
@@ -109,12 +109,12 @@ public class PracticeTestTablePage extends BasePage {
         List<Integer> enrollments = new ArrayList<>();
         for (WebElement row : driver.findElements(rowsLocator)) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.size() >= 5) {
-                String enrollmentText = cells.get(4).getText().replace(",", "").trim();
-                if (!enrollmentText.isEmpty()) {
-                    enrollments.add(Integer.parseInt(enrollmentText));
-                }
+            //if (cells.size() >= 5) {
+            String enrollmentText = cells.get(4).getText();//.replace(",", "").trim();
+            if (!enrollmentText.isEmpty()) {
+                enrollments.add(Integer.parseInt(enrollmentText));
             }
+            //}
         }
         return enrollments;
     }
