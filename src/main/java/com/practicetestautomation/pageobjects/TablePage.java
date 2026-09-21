@@ -98,8 +98,9 @@ public class TablePage extends BasePage {
         List<String> courseNames = new ArrayList<>();
         for (WebElement row : driver.findElements(rowsLocator)) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (!cells.isEmpty()) {
-                courseNames.add(cells.get(1).getText());
+            String courseText = cells.get(1).getText();
+            if (!courseText.isEmpty()) {
+                courseNames.add(courseText);
             }
         }
         return courseNames;
@@ -109,12 +110,10 @@ public class TablePage extends BasePage {
         List<Integer> enrollments = new ArrayList<>();
         for (WebElement row : driver.findElements(rowsLocator)) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            //if (cells.size() >= 5) {
-            String enrollmentText = cells.get(4).getText();//.replace(",", "").trim();
+            String enrollmentText = cells.get(4).getText();
             if (!enrollmentText.isEmpty()) {
                 enrollments.add(Integer.parseInt(enrollmentText));
             }
-            //}
         }
         return enrollments;
     }
